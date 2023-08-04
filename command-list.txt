@@ -1,0 +1,106 @@
+All commands list:
+$modelname “name”
+$body	<name> <reference mesh SMD> [reverse] [scale <int>]
+$model "<name>" "<filepath>/<reference_model>"
+$renamematerial	<current material>	<new material>
+
+$texturegroup <name>
+{
+	{ "<default material>" } //Skin 0 (default)
+	{ "<new material>"     } //Skin 1
+ 	[...]
+}
+$texturegroup <name>
+{
+	{ "<default material 1>" "<default material 2>" [...] } //Skin 0 (default)
+	{ "<new material 1>"     "<new material 2>"     [...] } //Skin 1
+	[...]
+}
+
+$cdmaterials <path> <path 2> [...]
+$surfaceprop <name>
+$jointsurfaceprop <bone name> <surfaceprop>
+$bodygroup sights
+{
+	studio ironsights
+	studio laser_dot
+	blank
+}
+$collisionmodel	<collision mesh SMD/DMX>
+{
+	<options>
+}
+$collisionjoints <collision mesh SMD/DMX>
+{
+    <options>
+}
+$keyvalues
+{
+	prop_data
+	{
+		base			Wooden.Small 
+		dmg.bullets		0 
+		explosive_damage	100
+		explosive_radius	50 
+	}
+}
+
+
+
+$jigglebone (in all games since )
+$hbox
+$hboxset
+$contents
+$animation
+$sequence
+$declaresequence
+$ikchain
+$weightlist
+$poseparameter
+$proceduralbones
+$append
+$prepend
+$continue
+Skeleton
+$root
+$hierarchy
+$definebone
+$bonemerge
+$animblocksize
+$realignbones
+$renamebone
+$jointsurfaceprop
+$contents
+$jointcontents
+$alwayscollapse
+$keyvalues
+$include
+$includemodel
+$scale
+$autocenter
+$upaxis
+$pushd and $popd
+$definemacro and $definevariable
+$continue
+$cmdlist
+$centerbonesonverts
+$staticprop
+$shadowlod
+$collapsebones
+$alwayscollapse
+$opaque
+$mostlyopaque
+$animblocksize
+$sectionframes
+$noforcedfade
+$lod
+$maxverts
+$illumposition
+$constantdirectionallight
+$ambientboost
+$model
+$eyeposition
+$attachment
+$origin
+$collisiontext (gibs)
+$autocenter
