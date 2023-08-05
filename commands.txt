@@ -1,2 +1,0 @@
-modelname String
-body String String Boolean 
