@@ -1,10 +1,16 @@
 package commands;
 
-public abstract class Command {
+import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
+
+public abstract class Command extends FlowPane {
 	private String commandName;
+	private Label labelName;
 
 	public Command(String commandName) {
 		this.commandName = commandName;
+		this.labelName = new Label(commandName);
+		this.getChildren().add(labelName);
 	}
 
 	public String getCommandName() {
