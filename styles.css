@@ -13,9 +13,24 @@
     -fx-background-color: rgb(104, 104, 104);
 }
 
-.command-button {
-    /* -fx-background-color: transparent; */
-    /* -fx-border-color: transparent; */
+.command-flow {
+    -fx-border-color: rgb(0, 0, 0);
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+}
+
+.button.control-position {
+    -fx-margin: 0;
+    -fx-padding: 4px;
+    -fx-font-size: 8px;
+    -fx-text-fill: #575757;
+}
+
+.button.control-remove {
+    -fx-margin: 0;
+    -fx-padding: 4px;
+    -fx-font-size: 8px;
+    -fx-text-fill: #575757;
 }
 
 .labeled {

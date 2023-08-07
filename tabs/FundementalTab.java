@@ -11,7 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 
-public class FundementalTab extends BorderPane {
+public class FundementalTab {
 	private static BorderPane borderPane = new BorderPane();
 	private static FlowPane topPane = new FlowPane(new Label("Fundemental things"));
 	private static VBox leftPane = new VBox(1, createButtons());
@@ -28,7 +28,7 @@ public class FundementalTab extends BorderPane {
 		leftPane.getStyleClass().add("pane");
 		centerPane.getStyleClass().add("pane");
 
-		leftPane.setPrefWidth(200);
+		centerPane.prefWidthProperty().bind(centerScrollPane.widthProperty().subtract(5));
 
 		borderPane.setTop(topPane);
 		borderPane.setLeft(leftScrollPane);
@@ -59,5 +59,9 @@ public class FundementalTab extends BorderPane {
 
 	public static BorderPane getBorderPane() {
 		return borderPane;
+	}
+
+	public static VBox getCenterPane() {
+		return centerPane;
 	}
 }

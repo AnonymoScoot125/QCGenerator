@@ -33,7 +33,7 @@ public class Main extends Application {
 		MenuItem openItem = new MenuItem("Open");
 		MenuItem saveItem = new MenuItem("Save");
 		MenuItem exitItem = new MenuItem("Exit");
-
+ 
 		saveItem.setOnAction(e -> {
 			printQCFile();
 		});
