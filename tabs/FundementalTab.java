@@ -1,8 +1,10 @@
 package tabs;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
-import commands.Modelname;
+import commands.*;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -37,7 +39,7 @@ public class FundementalTab {
 
 	private static Label createCommandButton(String name, Supplier<Node> classConstructor) {
 		Label button = new Label(name);
-		button.getStyleClass().add("labeled");
+		button.getStyleClass().add("commands");
 		button.setOnMouseClicked(e -> {
 			try {
 				Node node = classConstructor.get();
@@ -53,7 +55,7 @@ public class FundementalTab {
 	private static Label[] createButtons() {
 		return new Label[] {
 				createCommandButton("$modelname", Modelname::new),
-
+				createCommandButton("$body", Body::new),
 		};
 	}
 
@@ -63,5 +65,15 @@ public class FundementalTab {
 
 	public static VBox getCenterPane() {
 		return centerPane;
+	}
+
+	public static List<String> getCommandsStringRepresentation() {
+		List<String> stringList = new ArrayList<>();
+
+		for (Node command : centerPane.getChildren()) {
+			stringList.add(command.toString());
+		}
+
+		return stringList;
 	}
 }

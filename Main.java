@@ -12,14 +12,9 @@ import javafx.stage.Stage;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import commands.*;
 import tabs.*;
 
 public class Main extends Application {
-	private static List<Command> commandList = new ArrayList<>();
-
 	private static VBox rootPanel = new VBox();
 	private static MenuBar menuBar = new MenuBar();
 	private static TabPane tabPane = new TabPane();
@@ -33,7 +28,7 @@ public class Main extends Application {
 		MenuItem openItem = new MenuItem("Open");
 		MenuItem saveItem = new MenuItem("Save");
 		MenuItem exitItem = new MenuItem("Exit");
- 
+
 		saveItem.setOnAction(e -> {
 			printQCFile();
 		});
@@ -56,8 +51,8 @@ public class Main extends Application {
 	private static void printQCFile() {
 
 		try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("output\\output.txt"))) {
-			for (Command command : commandList)
-				bufferedWriter.write(command.getStringRepresentation() + "\n");
+			for (String commandString : FundementalTab.getCommandsStringRepresentation())
+				bufferedWriter.write(commandString + "\n");
 		} catch (IOException e) {
 			System.out.println("Input/Output exception when generating QC file.");
 		}

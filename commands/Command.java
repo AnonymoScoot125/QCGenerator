@@ -1,11 +1,7 @@
 package commands;
 
-import javafx.application.Application;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TitledPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -14,33 +10,24 @@ import tabs.FundementalTab;
 public abstract class Command extends FlowPane {
 	private static final int BUTTON_SIZE = 25;
 
+	private Button buttonUp = new Button("\u25B2");
+	private Button removeButton = new Button("\u2212");
+	private Button buttonDown = new Button("\u25BC");
+	private HBox controlBox = new HBox();
+
 	private String commandName;
-	private Label labelName;
-	private static int nums = 0;
+	private Node commandNode;
 
-	public Command(String commandName) {
-		this.commandName = commandName;
+	{
+		this.buttonUp.getStyleClass().add("control-position");
+		this.removeButton.getStyleClass().add("control-remove");
+		this.buttonDown.getStyleClass().add("control-position");
 
-		HBox handlingBox = new HBox();
+		this.buttonUp.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+		this.removeButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
+		this.buttonDown.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
 
-		Button buttonUp = new Button("\u25B2");
-		Button removeButton = new Button("\u2212");
-		Button buttonDown = new Button("\u25BC");
-		buttonUp.getStyleClass().add("control-position");
-		removeButton.getStyleClass().add("control-remove");
-		buttonDown.getStyleClass().add("control-position");
-		buttonUp.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
-		removeButton.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
-		buttonDown.setPrefSize(BUTTON_SIZE, BUTTON_SIZE);
-
-		handlingBox.getChildren().addAll(buttonUp, removeButton, buttonDown);
-
-		TitledPane titledPane = new TitledPane(commandName, new Label("commandName"));
-		titledPane.setAnimated(false);
-
-		this.getChildren().addAll(handlingBox, titledPane);
-
-		buttonUp.setOnAction(e -> {
+		this.buttonUp.setOnAction(e -> {
 			VBox centerPane = FundementalTab.getCenterPane();
 			int currentIndex = centerPane.getChildren().indexOf(this);
 			if (currentIndex > 0) {
@@ -48,7 +35,7 @@ public abstract class Command extends FlowPane {
 				centerPane.getChildren().add(currentIndex - 1, this);
 			}
 		});
-		buttonDown.setOnAction(e -> {
+		this.buttonDown.setOnAction(e -> {
 			VBox centerPane = FundementalTab.getCenterPane();
 			int currentIndex = centerPane.getChildren().indexOf(this);
 			if (currentIndex < centerPane.getChildren().size() - 1) {
@@ -56,24 +43,30 @@ public abstract class Command extends FlowPane {
 				centerPane.getChildren().add(currentIndex + 1, this);
 			}
 		});
-		removeButton.setOnAction(e -> {
+		this.removeButton.setOnAction(e -> {
 			FundementalTab.getCenterPane().getChildren().remove(this);
 		});
 
+		controlBox.getChildren().addAll(buttonUp, removeButton, buttonDown);
+		this.getChildren().add(controlBox);
 		this.getStyleClass().add("command-flow");
+	}
+
+	public Command(String commandName) {
+		this.commandName = commandName;
 	}
 
 	public String getCommandName() {
 		return commandName;
 	}
 
-	public String getStringRepresentation() {
-		StringBuilder sb = new StringBuilder();
+	protected void addCommandNode(Node commandNode) {
+		this.commandNode = commandNode;
+		this.getChildren().add(this.commandNode);
+	}
 
-		sb.append("$" + commandName + "\t");
-		sb.append(toString());
-
-		return sb.toString();
+	protected String inQuotes(String inpuString) {
+		return "\"" + inpuString + "\"";
 	}
 
 	@Override
