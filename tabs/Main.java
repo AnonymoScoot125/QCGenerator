@@ -1,3 +1,5 @@
+package tabs;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
@@ -12,12 +14,12 @@ import javafx.stage.Stage;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import tabs.*;
 
 public class Main extends Application {
 	private static VBox rootPanel = new VBox();
 	private static MenuBar menuBar = new MenuBar();
 	private static TabPane tabPane = new TabPane();
+	private static Stage mainStage;
 
 	static {
 
@@ -59,9 +61,13 @@ public class Main extends Application {
 
 	}
 
+	public static Stage getStage() {
+		return mainStage;
+	}
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
+		mainStage = primaryStage;
 		Scene scene = new Scene(rootPanel, 1000, 800);
 		scene.getStylesheets().add("styles.css");
 		tabPane.prefHeightProperty().bind(scene.heightProperty());

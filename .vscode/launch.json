@@ -6,6 +6,14 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "tabs.Main",
+            "projectName": "QCGenerator_419c971f",
+            "vmArgs": "--module-path \"C:/Libraries/Java/javafx-sdk-20.0.1/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
