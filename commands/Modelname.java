@@ -26,10 +26,7 @@ public class Modelname extends Command {
 
     @Override
     public String toString() {
-        if (filePath.getText().endsWith(".mdl"))
-            return COMMAND_NAME + "\t" + inQuotes(filePath.getText());
-        else
-            return COMMAND_NAME + "\t" + inQuotes(filePath.getText() + ".mdl");
+        return COMMAND_NAME + "\t" + inQuotes(formatFileName(filePath.getText(), ".mdl"));
     }
 
 }

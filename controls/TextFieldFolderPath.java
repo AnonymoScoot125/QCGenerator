@@ -34,7 +34,8 @@ public class TextFieldFolderPath extends Control {
                 int index = selectedDirectory.getAbsolutePath().indexOf(referenceFolder);
 
                 if (index != -1) {
-                    String leftover = selectedDirectory.getAbsolutePath().substring(index + referenceFolder.length());
+                    String leftover = selectedDirectory.getAbsolutePath()
+                            .substring(index + referenceFolder.length());
                     textField.setText(leftover);
                 } else {
                     textField.setText(selectedDirectory.getAbsolutePath());
@@ -43,13 +44,8 @@ public class TextFieldFolderPath extends Control {
         });
     }
 
-    public TextFieldFolderPath(String text) {
-        this.label.setText(text);
-    }
-
     public TextFieldFolderPath(String text, String defaultValue) {
-        this.label.setText(text);
-        this.defaultValue = defaultValue;
+        this(text, defaultValue, "");
     }
 
     public TextFieldFolderPath(String text, String defaultValue, String referenceFolder) {

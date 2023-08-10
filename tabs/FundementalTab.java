@@ -56,6 +56,8 @@ public class FundementalTab {
 		return new Label[] {
 				createCommandButton("$modelname", Modelname::new),
 				createCommandButton("$body", Body::new),
+				createCommandButton("$renamematerial", RenameMaterial::new),
+				createCommandButton("$cdmaterials", ChangeDirectoryMaterials::new),
 		};
 	}
 

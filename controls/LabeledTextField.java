@@ -16,10 +16,6 @@ public class LabeledTextField extends Control {
         this.hBox.setAlignment(Pos.CENTER_LEFT);
     }
 
-    public LabeledTextField(String text) {
-        this.label.setText(text);
-    }
-
     public LabeledTextField(String text, String defaultValue) {
         this.label.setText(text);
         this.defaultValue = defaultValue;

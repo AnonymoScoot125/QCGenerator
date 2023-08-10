@@ -69,6 +69,21 @@ public abstract class Command extends FlowPane {
 		return "\"" + inpuString + "\"";
 	}
 
+	protected String inQuotes(Boolean inputBoolean) {
+		return "\"" + inputBoolean.toString() + "\"";
+	}
+
+	protected String inQuotes(Integer inputInteger) {
+		return "\"" + inputInteger.toString() + "\"";
+	}
+
+	protected String formatFileName(String inpuString, String fileName) {
+		if (inpuString.endsWith(fileName))
+			return inpuString;
+		else
+			return inpuString + fileName;
+	}
+
 	@Override
 	public abstract String toString();
 }
