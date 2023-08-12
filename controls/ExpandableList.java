@@ -3,7 +3,6 @@ package controls;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 
-import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;

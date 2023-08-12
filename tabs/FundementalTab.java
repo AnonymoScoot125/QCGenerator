@@ -58,6 +58,10 @@ public class FundementalTab {
 				createCommandButton("$body", Body::new),
 				createCommandButton("$renamematerial", RenameMaterial::new),
 				createCommandButton("$cdmaterials", ChangeDirectoryMaterials::new),
+				createCommandButton("$surfaceprop", SurfaceProp::new),
+				createCommandButton("$jointsurfaceprop", JointSurfaceProp::new),
+				createCommandButton("$texturegroup", TextureGroup::new),
+				createCommandButton("$bodygroup", BodyGroup::new),
 		};
 	}
 

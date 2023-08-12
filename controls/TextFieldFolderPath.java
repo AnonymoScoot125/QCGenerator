@@ -36,9 +36,9 @@ public class TextFieldFolderPath extends Control {
                 if (index != -1) {
                     String leftover = selectedDirectory.getAbsolutePath()
                             .substring(index + referenceFolder.length());
-                    textField.setText(leftover);
+                    textField.setText(leftover + "\\");
                 } else {
-                    textField.setText(selectedDirectory.getAbsolutePath());
+                    textField.setText(selectedDirectory.getAbsolutePath() + "\\");
                 }
             }
         });

@@ -10,11 +10,12 @@ public class ChangeDirectoryMaterials extends Command {
 	private static final String COMMAND_NAME = "$cdmaterials";
 	private static final String LABEL_MATERIAL_PATH = "Folder Path";
 	private static final String DEFAULT_MATERIAL_PATH = "__folder_path";
+	private static final String REFERENCE_FOLDER_PATH = "materials\\";
 
 	private TitledPane titledPane = new TitledPane();
 	private VBox vBox = new VBox();
 	private ExpandableList<TextFieldFolderPath> expandableList = new ExpandableList<>(
-			() -> new TextFieldFolderPath(LABEL_MATERIAL_PATH, DEFAULT_MATERIAL_PATH));
+			() -> new TextFieldFolderPath(LABEL_MATERIAL_PATH, DEFAULT_MATERIAL_PATH, REFERENCE_FOLDER_PATH));
 
 	{
 		super.addCommandNode(titledPane);

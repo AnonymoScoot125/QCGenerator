@@ -84,6 +84,10 @@ public abstract class Command extends FlowPane {
 			return inpuString + fileName;
 	}
 
+	protected String inBlock(String inpuString) {
+		return "{\n" + inpuString + "\n}";
+	}
+
 	@Override
 	public abstract String toString();
 }
