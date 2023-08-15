@@ -63,4 +63,9 @@ public class TextFieldFolderPath extends Control {
         return hBox;
     }
 
+    @Override
+    public String toString() {
+        return getText();
+    }
+
 }

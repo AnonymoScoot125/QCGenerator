@@ -46,4 +46,9 @@ public class BooleanToggle extends Control {
         return hBox;
     }
 
+    @Override
+    public String toString() {
+        return toggleButton.isSelected() ? "true" : "false";
+    }
+
 }

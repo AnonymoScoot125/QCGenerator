@@ -34,8 +34,8 @@ public class BodyGroup extends Command {
 
     @Override
     public String toString() {
-        StringBuilder sbCommand = new StringBuilder(COMMAND_NAME + "\t" + inQuotes(nameTextField.getText())  + "\n");
-        StringBuilder sbBlock = new StringBuilder(); 
+        StringBuilder sbCommand = new StringBuilder(COMMAND_NAME + "\t" + inQuotes(nameTextField.getText()) + "\n");
+        StringBuilder sbBlock = new StringBuilder();
 
         for (LabeledTextField s : expandableList.getControls()) {
             if (s.getText().isEmpty()) {

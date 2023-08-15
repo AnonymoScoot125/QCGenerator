@@ -46,6 +46,19 @@ public class ExpandableList<T extends Control> extends Control {
         return vBox;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sbBlock = new StringBuilder("{\n");
+
+        for (Control control : arrayList) {
+            sbBlock.append(control.toString() + "\n");
+        }
+
+        sbBlock.append("}\n");
+
+        return sbBlock.toString();
+    }
+
     private class ListEntry {
         private Button removeButton = new Button("-");
         private HBox hBox = new HBox(removeButton);

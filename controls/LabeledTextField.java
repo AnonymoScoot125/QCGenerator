@@ -30,4 +30,9 @@ public class LabeledTextField extends Control {
         return hBox;
     }
 
+    @Override
+    public String toString() {
+        return getText();
+    }
+
 }

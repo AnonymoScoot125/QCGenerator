@@ -62,6 +62,7 @@ public class FundementalTab {
 				createCommandButton("$jointsurfaceprop", JointSurfaceProp::new),
 				createCommandButton("$texturegroup", TextureGroup::new),
 				createCommandButton("$bodygroup", BodyGroup::new),
+				createCommandButton("$collisionmodel", CollisionModel::new),
 		};
 	}
 

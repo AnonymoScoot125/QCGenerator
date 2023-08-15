@@ -34,4 +34,9 @@ public class IntegerTextField extends Control {
     public Node getControlNode() {
         return hBox;
     }
+
+    @Override
+    public String toString() {
+        return Integer.valueOf(getValue()).toString();
+    }
 }
