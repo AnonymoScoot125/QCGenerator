@@ -34,21 +34,6 @@ public class TextureGroup extends Command {
 
     @Override
     public String toString() {
-        StringBuilder sbCommand = new StringBuilder(COMMAND_NAME + "\t" + inQuotes(nameTextField.getText()) + "\n");
-        StringBuilder sbBlock = new StringBuilder();
-
-        for (ExpandableList<LabeledTextField> list : expandableList.getControls()) {
-            StringBuilder sbTextures = new StringBuilder();
-
-            sbBlock.append("\t{ ");
-            for (LabeledTextField textField : list.getControls()) {
-                sbTextures.append(inQuotes(textField.getText()) + "\t");
-            }
-            sbBlock.append(sbTextures.toString().trim() + " }\n");
-        }
-        if (!sbBlock.isEmpty())
-            sbBlock.deleteCharAt(sbBlock.length() - 1);
-
-        return sbCommand.append(inBlock(sbBlock.toString())).toString();
+        return COMMAND_NAME + "\t" + nameTextField.getText() + "\n" + expandableList.toString();
     }
 }

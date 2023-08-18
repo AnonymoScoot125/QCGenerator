@@ -32,12 +32,7 @@ public class ChangeDirectoryMaterials extends Command {
 
 	@Override
 	public String toString() {
-		StringBuilder sBuilder = new StringBuilder(COMMAND_NAME + "\t");
 
-		for (TextFieldFolderPath textField : expandableList.getControls()) {
-			sBuilder.append(inQuotes(textField.getText()) + "\t");
-		}
-
-		return sBuilder.toString().trim();
+		return COMMAND_NAME + "\n" + expandableList.toString();
 	}
 }

@@ -22,7 +22,7 @@ public class LabeledTextField extends Control {
     }
 
     public String getText() {
-        return textField.getText().isEmpty() ? defaultValue : textField.getText();
+        return textField.getText().isEmpty() ? inQuotes(defaultValue) : inQuotes(textField.getText());
     }
 
     @Override

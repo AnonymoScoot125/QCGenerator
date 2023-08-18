@@ -39,10 +39,7 @@ public class CollisionModel extends Command {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(
-                COMMAND_NAME + "\t" + inQuotes(meshTextField.getText()) + "\n" + expandableList.toString());
-
-        return sb.toString();
+        return COMMAND_NAME + "\t" + meshTextField.getText() + "\n" + expandableList.toString();
     }
 
     private Map<String, Supplier<Control>> getOptions() {

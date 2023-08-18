@@ -16,6 +16,7 @@ import tabs.Main;
 public class TextFieldFolderPath extends Control {
     private String defaultValue;
     private String referenceFolder;
+    private String fileExtensionName;
     private Label label = new Label();
     private TextField textField = new TextField();
     private DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -31,12 +32,12 @@ public class TextFieldFolderPath extends Control {
         this.fileButton.setOnAction(e -> {
             File selectedDirectory = directoryChooser.showDialog(Main.getStage());
             if (selectedDirectory != null) {
-                int index = selectedDirectory.getAbsolutePath().indexOf(referenceFolder);
-
-                if (index != -1) {
+                if (referenceFolder != null && selectedDirectory.getAbsolutePath().indexOf(referenceFolder) != -1) {
                     String leftover = selectedDirectory.getAbsolutePath()
-                            .substring(index + referenceFolder.length());
+                            .substring(selectedDirectory.getAbsolutePath().indexOf(referenceFolder)
+                                    + referenceFolder.length());
                     textField.setText(leftover + "\\");
+
                 } else {
                     textField.setText(selectedDirectory.getAbsolutePath() + "\\");
                 }
@@ -49,13 +50,19 @@ public class TextFieldFolderPath extends Control {
     }
 
     public TextFieldFolderPath(String text, String defaultValue, String referenceFolder) {
+        this(text, defaultValue, referenceFolder, "");
+    }
+
+    public TextFieldFolderPath(String text, String defaultValue, String referenceFolder, String fileExtensionName) {
         this.label.setText(text);
         this.defaultValue = defaultValue;
         this.referenceFolder = referenceFolder;
+        this.fileExtensionName = fileExtensionName;
     }
 
     public String getText() {
-        return textField.getText().isEmpty() ? defaultValue : textField.getText();
+        return textField.getText().isEmpty() ? inQuotes(formatFileName(defaultValue, fileExtensionName))
+                : inQuotes(formatFileName(textField.getText(), fileExtensionName));
     }
 
     @Override

@@ -34,6 +34,8 @@ public class OptionParameter extends Control {
 
     @Override
     public String toString() {
+        if (this.command == null)
+            return "__invalid__";
         if (this.control != null)
             return command + "\t" + control.toString();
         else

@@ -26,7 +26,7 @@ public class SurfaceProp extends Command {
 
     @Override
     public String toString() {
-        return COMMAND_NAME + "\t" + inQuotes(surfacePropTextField.getText());
+        return COMMAND_NAME + "\t" + surfacePropTextField.getText();
     }
 
 }

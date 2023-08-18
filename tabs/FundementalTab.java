@@ -63,6 +63,10 @@ public class FundementalTab {
 				createCommandButton("$texturegroup", TextureGroup::new),
 				createCommandButton("$bodygroup", BodyGroup::new),
 				createCommandButton("$collisionmodel", CollisionModel::new),
+				createCommandButton("$hbox", Hitbox::new),
+				createCommandButton("$hboxset", HitboxSet::new),
+				createCommandButton("$contents", Contents::new),
+				createCommandButton("keyvalues", KeyValues::new),
 		};
 	}
 

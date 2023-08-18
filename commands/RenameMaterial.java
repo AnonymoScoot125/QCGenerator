@@ -34,8 +34,8 @@ public class RenameMaterial extends Command {
 
     @Override
     public String toString() {
-        return COMMAND_NAME + "\t" + inQuotes(currentMaterialTextField.getText()) + "\t"
-                + inQuotes(newMaterialTextField.getText());
+        return COMMAND_NAME + "\t" + currentMaterialTextField.getText() + "\t"
+                + newMaterialTextField.getText();
     }
 
 }

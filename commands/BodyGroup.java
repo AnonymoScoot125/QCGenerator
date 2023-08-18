@@ -1,7 +1,13 @@
 package commands;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Supplier;
+
+import controls.Control;
 import controls.ExpandableList;
 import controls.LabeledTextField;
+import controls.OptionParameter;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 
@@ -11,12 +17,12 @@ public class BodyGroup extends Command {
     private static final String LABEL_BODY_GROUP = "Body Group";
     private static final String LABEL_GROUP = "Group";
     private static final String DEFAULT_BODY_GROUP = "__body_group";
-    private static final String DEFAULT_GROUP = "";
+    private static final String DEFAULT_GROUP = "__group";
 
     private TitledPane titledPane = new TitledPane();
     private LabeledTextField nameTextField = new LabeledTextField(LABEL_BODY_GROUP, DEFAULT_BODY_GROUP);
-    private ExpandableList<LabeledTextField> expandableList = new ExpandableList<>(
-            () -> new LabeledTextField(LABEL_GROUP, DEFAULT_GROUP));
+    private ExpandableList<OptionParameter> expandableList = new ExpandableList<>(
+            () -> new OptionParameter(getOptions()));
     private VBox vBox = new VBox();
 
     {
@@ -34,20 +40,15 @@ public class BodyGroup extends Command {
 
     @Override
     public String toString() {
-        StringBuilder sbCommand = new StringBuilder(COMMAND_NAME + "\t" + inQuotes(nameTextField.getText()) + "\n");
-        StringBuilder sbBlock = new StringBuilder();
+        return COMMAND_NAME + "\t" + nameTextField.getText() + "\n" + expandableList.toString();
+    }
 
-        for (LabeledTextField s : expandableList.getControls()) {
-            if (s.getText().isEmpty()) {
-                sbBlock.append("\tblank\n");
-            } else {
-                sbBlock.append("\tstudio\t" + inQuotes(s.getText()) + "\n");
-            }
-        }
-        if (!sbBlock.isEmpty())
-            sbBlock.deleteCharAt(sbBlock.length() - 1);
+    private Map<String, Supplier<Control>> getOptions() {
+        Map<String, Supplier<Control>> map = new LinkedHashMap<>();
+        map.put("studio", () -> new LabeledTextField(LABEL_GROUP, DEFAULT_GROUP));
+        map.put("blank", () -> null);
 
-        return sbCommand.append(inBlock(sbBlock.toString())).toString();
+        return map;
     }
 
 }

@@ -9,9 +9,11 @@ public class Modelname extends Command {
     private static final String LABEL_NAME = "Model name";
     private static final String FOLDER_NAME = "models\\";
     private static final String DEFAULT_VALUE = "__default.mdl";
+    private static final String FILE_EXTENSION_NAME = ".mdl";
 
     private TitledPane titledPane = new TitledPane();
-    private TextFieldFolderPath filePath = new TextFieldFolderPath(LABEL_NAME, DEFAULT_VALUE, FOLDER_NAME);
+    private TextFieldFolderPath filePath = new TextFieldFolderPath(LABEL_NAME, DEFAULT_VALUE, FOLDER_NAME,
+            FILE_EXTENSION_NAME);
 
     {
         super.addCommandNode(titledPane);
@@ -26,7 +28,7 @@ public class Modelname extends Command {
 
     @Override
     public String toString() {
-        return COMMAND_NAME + "\t" + inQuotes(formatFileName(filePath.getText(), ".mdl"));
+        return COMMAND_NAME + "\t" + filePath.getText();
     }
 
 }
