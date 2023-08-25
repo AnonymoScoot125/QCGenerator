@@ -12,6 +12,7 @@ public class ExpandableList<T extends Control> extends Control {
 
     private Button addButton = new Button("+");
     private Supplier<T> supplier;
+    private String name;
     private VBox vBox = new VBox(addButton);
     private ArrayList<T> arrayList = new ArrayList<>();
 
@@ -22,7 +23,12 @@ public class ExpandableList<T extends Control> extends Control {
     }
 
     public ExpandableList(Supplier<T> supplier) {
+        this(supplier, "");
+    }
+
+    public ExpandableList(Supplier<T> supplier, String name) {
         this.supplier = supplier;
+        this.name = name;
     }
 
     public void add(T control) {
@@ -49,6 +55,9 @@ public class ExpandableList<T extends Control> extends Control {
     @Override
     public String toString() {
         StringBuilder sbBlock = new StringBuilder("{\n");
+
+        if (!name.isEmpty())
+            sbBlock.insert(0, this.name + "\t");
 
         for (Control control : arrayList) {
             sbBlock.append(control.toString() + "\n");

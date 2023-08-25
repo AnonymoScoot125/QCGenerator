@@ -45,6 +45,9 @@ public class KeyValues extends Command {
     private Map<String, Supplier<Control>> getOptions() {
         Map<String, Supplier<Control>> map = new LinkedHashMap<>();
         map.put("prop_data", () -> new PropData());
+        map.put("physgun_interactions", () -> new PhysgunInteractions());
+        map.put("fire_interactions", () -> new FireInteractions());
+        map.put("particles", () -> new Particles());
 
         return map;
     }
@@ -164,6 +167,40 @@ public class KeyValues extends Command {
             map.put("flammable", () -> null);
             map.put("ignite halfhealth", () -> null);
             map.put("explosive_resist", () -> null);
+
+            return map;
+        }
+
+    }
+
+    private class Particles extends Control {
+        private static final String LABEL_BASE = "Base type";
+        private static final String LABEL_HEALTH = "Health";
+        private static final int DEFAULT_HEALTH = 0;
+
+        private ExpandableList<ExpandableList<OptionParameter>> expandableList = new ExpandableList<>(
+                () -> new ExpandableList<>(() -> new OptionParameter(this.getOptions()), "effect"));
+        private HBox hBox = new HBox(expandableList.getControlNode());
+
+        {
+            this.hBox.setAlignment(Pos.CENTER_LEFT);
+        }
+
+        @Override
+        public Node getControlNode() {
+            return hBox;
+        }
+
+        @Override
+        public String toString() {
+            return expandableList.toString();
+        }
+
+        private Map<String, Supplier<Control>> getOptions() {
+            Map<String, Supplier<Control>> map = new LinkedHashMap<>();
+            map.put("name", () -> null);
+            map.put("attachment_type", () -> null);
+            map.put("attachment_point", () -> null);
 
             return map;
         }
