@@ -48,6 +48,7 @@ public class KeyValues extends Command {
         map.put("physgun_interactions", () -> new PhysgunInteractions());
         map.put("fire_interactions", () -> new FireInteractions());
         map.put("particles", () -> new Particles());
+        map.put("door_options", () -> new DoorOptions());
 
         return map;
     }
@@ -201,6 +202,53 @@ public class KeyValues extends Command {
             map.put("name", () -> null);
             map.put("attachment_type", () -> null);
             map.put("attachment_point", () -> null);
+
+            return map;
+        }
+
+    }
+
+    private class DoorOptions extends Control {
+        private static final String LABEL_BASE = "Base type";
+        private static final String LABEL_HEALTH = "Health";
+        private static final int DEFAULT_HEALTH = 0;
+
+        private ExpandableList<OptionParameter> expandableList = new ExpandableList<>(
+                () -> new OptionParameter(this.getOptions()));
+        private HBox hBox = new HBox(expandableList.getControlNode());
+
+        {
+            this.hBox.setAlignment(Pos.CENTER_LEFT);
+        }
+
+        @Override
+        public Node getControlNode() {
+            return hBox;
+        }
+
+        @Override
+        public String toString() {
+            return expandableList.toString();
+        }
+
+        private Map<String, Supplier<Control>> getOptions() {
+            Map<String, Supplier<Control>> map = new LinkedHashMap<>();
+            map.put("default", () -> new ExpandableList<>(() -> new OptionParameter(this.getItemOptions())));
+            map.put("hardware0", () -> new ExpandableList<>(() -> new OptionParameter(this.getItemOptions())));
+            map.put("hardware1", () -> new ExpandableList<>(() -> new OptionParameter(this.getItemOptions())));
+            map.put("hardware2", () -> new ExpandableList<>(() -> new OptionParameter(this.getItemOptions())));
+            map.put("skin0", () -> new ExpandableList<>(() -> new OptionParameter(this.getItemOptions())));
+
+            return map;
+        }
+
+        private Map<String, Supplier<Control>> getItemOptions() {
+            Map<String, Supplier<Control>> map = new LinkedHashMap<>();
+            map.put("open", () -> null);
+            map.put("close", () -> null);
+            map.put("move", () -> null);
+            map.put("locked", () -> null);
+            map.put("unlocked", () -> null);
 
             return map;
         }

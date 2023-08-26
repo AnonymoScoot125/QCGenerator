@@ -1,7 +1,9 @@
 package controls;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -60,7 +62,10 @@ public class ExpandableList<T extends Control> extends Control {
             sbBlock.insert(0, this.name + "\t");
 
         for (Control control : arrayList) {
-            sbBlock.append(control.toString() + "\n");
+            Stream<String> linesStream = Arrays.stream(control.toString().split("\n"));
+            linesStream.map((s) -> {
+                return "\t" + s + "\n";
+            }).forEach(sbBlock::append);
         }
 
         sbBlock.append("}\n");
